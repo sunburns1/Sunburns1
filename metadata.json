@@ -1,0 +1,6 @@
+{
+  "name": "Safaa Ride & Cargo",
+  "description": "Local 10-20km auto-rickshaw and e-rickshaw ride hailing & parcel delivery app for Nepal with eSewa, Khalti, and Nepalese bank payments.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

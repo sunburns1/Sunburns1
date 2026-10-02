@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Safaa Ride &amp; Cargo</string>
+    <string name="app_tagline">सफा टेम्पो, अटो र ई-रिक्सा यात्रा तथा डेलिभरी</string>
+    <string name="ride_tab">Ride</string>
+    <string name="delivery_tab">Cargo / Delivery</string>
+    <string name="history_tab">Activity</string>
+    <string name="drivers_tab">Drivers</string>
+    <string name="profile_tab">Profile</string>
+    <string name="esewa">eSewa</string>
+    <string name="khalti">Khalti</string>
+    <string name="nepalese_bank">Nepalese Bank / Fonepay</string>
+    <string name="cash">Cash on Ride</string>
+</resources>
