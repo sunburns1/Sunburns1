@@ -1,33 +1,35 @@
-name: Build Android APK
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+[versions]
+agp = "8.4.0"
+kotlin = "1.9.20"
+googleDevtoolsKsp = "1.9.20-1.0.14"
+secretsGradlePlugin = "2.0.1"
+googleServices = "4.4.1"
+androidxCoreKtx = "1.12.0"
+androidxLifecycleRuntimeKtx = "2.7.0"
+androidxActivityCompose = "1.8.2"
+androidxComposeBom = "2024.02.00"
+androidxAppCompat = "1.6.1"
+material = "1.11.0"
 
-jobs:
-  build:
-    name: Build APK
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidxLifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+material = { group = "google.android.material", name = "material", version.ref = "material" }
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: 8.4
-
-      - name: Build debug APK
-        run: gradle assembleDebug --no-daemon
-
-      - name: Upload APK File
-        uses: actions/upload-artifact@v4
-        with:
-          name: installable-app-package
-          path: "**/build/outputs/apk/debug/*.apk"
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "googleDevtoolsKsp" }
+secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
